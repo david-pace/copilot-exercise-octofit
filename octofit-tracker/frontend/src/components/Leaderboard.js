@@ -16,13 +16,28 @@ const Leaderboard = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Leaderboard</h2>
-      <ul>
-        {leaderboard.map((entry, idx) => (
-          <li key={idx}>{entry.name || JSON.stringify(entry)}</li>
-        ))}
-      </ul>
+    <div className="card mb-4">
+      <div className="card-header">
+        <h2 className="h4">Leaderboard</h2>
+      </div>
+      <div className="card-body">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboard.map((entry, idx) => (
+              <tr key={idx}>
+                <td>{entry.name || '-'}</td>
+                <td>{entry.score || JSON.stringify(entry)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
